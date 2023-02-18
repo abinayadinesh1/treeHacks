@@ -13,10 +13,13 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
 
+
+  const paintedLadies = "Hayes St, San Francisco, CA 94117"
+  
   // effect to grab information from walkscore api
   useEffect(() => {
     fetch(
-      "https://api.walkscore.com/score?format=json&address=1119%8th%20Avenue%20Seattle%20WA%2098101&lat=47.6085&lon=-122.3295&transit=1&bike=1&wsapikey=ffd1c56f9abcf84872116b4cc2dfcf31"
+      "https://stmhall.ca/walkscore.php?addr=Houston Texas Public Library"
     )
       .then((res) => res.json())
       .then(
@@ -33,14 +36,19 @@ function App() {
         }
       );
   }, []);
-  console.log(items);
+  console.log(items)
+  console.log(items.walkscore)
+
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else {
     return (
-      <p>hello</p>
+      <div>
+        <p>hello</p>
+        <SideMenu />
+      </div>      
       // <ul>
       //   {items.map((item) => (
       //     <li>
